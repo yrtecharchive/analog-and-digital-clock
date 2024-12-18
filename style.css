@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1e252c;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.clock-container {
+    text-align: center;
+}
+
+.clock {
+    position: relative;
+    width: 230px;
+    height: 230px;
+    border: 8px solid #2a3b4d;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: #111;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.center {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #28e98c;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.hour, .minute, .second {
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transition: all 0.05s linear;
+}
+
+.hour {
+    height: 4px;
+    background: #fff;
+    width: 30%;
+    left: 20%;
+}
+
+.minute {
+    height: 2px;
+    background: #ddd;
+    width: 40%;
+    left: 10%;
+}
+
+.second {
+    height: 1px;
+    background: #28e98c;
+    width: 45%;
+    left: 5%;
+}
+
+.clock .indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicator .marker {
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background: #aaa;
+    top: 0;
+    transform-origin: center;
+}
+
+.indicator .hour-marker {
+    width: 4px;
+    height: 12px;
+    background: #fff;
+}
+
+@for $i from 0 through 59 {
+    .clock .indicator:nth-child(#{$i + 1}) {
+        transform: rotate(#{$i * 6}deg);
+    }
+    .clock .indicator:nth-child(#{$i + 1}) .marker {
+        background: #666;
+    }
+    .clock .indicator:nth-child(#{($i % 5) == 0 ? $i + 1 : 0}) .hour-marker {
+        background: #fff;
+    }
+}
+
+.digital-clock {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: #aaa;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 0.8rem;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #28e98c;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
